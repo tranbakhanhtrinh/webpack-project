@@ -1,3 +1,4 @@
+// @refresh reset -> this is called pragma which will clear state if files changes.
 import { useState } from 'react';
 
 const elvenShieldRecipe = {
