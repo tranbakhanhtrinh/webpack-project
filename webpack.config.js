@@ -6,12 +6,27 @@ let target = process.env.NODE_ENV === "production" ? "browserslist" : "web";
 module.exports = {
     mode: mode,
     target: target,
+    output: {
+        assetModuleFilename: "images/[hash][ext][query]"
+    },
     module: {
         rules: [
             {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                type: "asset",
+                // parser: {
+                //     dataUrlCondition: {
+                //         maxSize: 30 * 1024 // 30kb
+                //     }
+                // }
+            },
+            {
                 test: /\.(s[ac]|c)ss$/i,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: { publicPath: "" }
+                    },
                     'css-loader',
                     'postcss-loader',
                     'sass-loader'
