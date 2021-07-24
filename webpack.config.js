@@ -13,7 +13,7 @@ const plugins = [
         template: "./src/index.html"
     }),
 ]
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.SERVE) {
     plugins.push(new ReactRefreshWebpackPlugin())
 }
 
